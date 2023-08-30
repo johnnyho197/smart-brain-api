@@ -1,24 +1,14 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
-const knex = require('knex');
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
+const db = require('./controllers/knex')
 
 const port = process.env.PORT || 3000;
-const db = knex({
-  client: 'pg',
-  connection: {
-    host : '127.0.0.1',
-    user : 'postgres',
-    port : 5432, 
-    password : 'rainwind171',
-    database : 'smart-brain'
-  }
-});
 
 const app = express();
 const allowedOrigins = ['https://smart-brain-huuho.netlify.app', 'http://localhost:3001'];

@@ -1,4 +1,3 @@
-
 const handleSignin = (db, bcrypt) => (req, res) => {
   const { email, password } = req.body;
   db.select('email', 'hash').from('login')
