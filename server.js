@@ -8,7 +8,7 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 const db = knex({
   client: 'pg',
   connection: {
@@ -21,7 +21,7 @@ const db = knex({
 });
 
 const app = express();
-const allowedOrigins = ['https://smart-brain-huuho.netlify.app'];
+const allowedOrigins = ['https://smart-brain-huuho.netlify.app', 'http://localhost:3001'];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -45,5 +45,5 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res)})
 
 app.listen(port, ()=> {
-  console.log('app is running on port 8080');
+  console.log('app is running on port 3000');
 })
