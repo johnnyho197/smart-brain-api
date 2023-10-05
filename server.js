@@ -11,17 +11,8 @@ const db = require('./controllers/knex')
 const port = process.env.PORT || 3000;
 
 const app = express();
-const allowedOrigins = ['https://smart-brain-huuho.netlify.app', 'http://localhost:3001'];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors())
 
 app.use(express.json()); 
 
